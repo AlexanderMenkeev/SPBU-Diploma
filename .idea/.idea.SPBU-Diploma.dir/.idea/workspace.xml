@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="synced with projectPaper" />
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/existingSolutions.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/generatorDev.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/chapter1.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generatorIdea.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/chapter2.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/gameDev.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +99,8 @@
       <workItem from="1715490804127" duration="3375000" />
       <workItem from="1715566087988" duration="1395000" />
       <workItem from="1715567521102" duration="622000" />
-      <workItem from="1715568388804" duration="5234000" />
+      <workItem from="1715568388804" duration="11943000" />
+      <workItem from="1715658481922" duration="7574000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
@@ -108,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715602593240</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="intro is done">
+      <option name="closed" value="true" />
+      <created>1715611738816</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715611738816</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +138,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="titlepage is done!" />
     <MESSAGE value="synced with projectPaper" />
-    <option name="LAST_COMMIT_MESSAGE" value="synced with projectPaper" />
+    <MESSAGE value="intro is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="intro is done" />
   </component>
 </project>
