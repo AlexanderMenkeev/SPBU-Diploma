@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="" />
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/conclusion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/conclusion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/evolutionMethods.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/evolutionMethods.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/existingSolutions.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/existingSolutions.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +100,7 @@
       <workItem from="1715568388804" duration="11943000" />
       <workItem from="1715658481922" duration="11274000" />
       <workItem from="1715699750676" duration="4978000" />
+      <workItem from="1715773835750" duration="7728000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
