@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/conclusion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/conclusion.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/existingSolutions.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/existingSolutions.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/gameDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/gameDev.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/generatorDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generatorDev.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/generatorIdea.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generatorIdea.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
-    </list>
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +92,7 @@
       <workItem from="1715567521102" duration="622000" />
       <workItem from="1715568388804" duration="11943000" />
       <workItem from="1715658481922" duration="11274000" />
-      <workItem from="1715699750676" duration="4681000" />
+      <workItem from="1715699750676" duration="4978000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
@@ -136,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715689225992</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="something is done">
+      <option name="closed" value="true" />
+      <created>1715704760003</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715704760003</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +148,7 @@
     <MESSAGE value="synced with projectPaper" />
     <MESSAGE value="intro is done" />
     <MESSAGE value="plan is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="plan is done" />
+    <MESSAGE value="something is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="something is done" />
   </component>
 </project>
