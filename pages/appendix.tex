@@ -1,0 +1,111 @@
+﻿\specialsection{Приложение}\label{sec:appendix}
+
+\begin{lstlisting}[caption={Пример XML файла, представляющего некоторую нейронную сеть},label={lst:xml}]
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <ActivationFunctions>
+    <Fn id="0" name="Linear" prob="0.1" />
+    <Fn id="1" name="Sine" prob="0.1" />
+    <Fn id="2" name="ArcTan" prob="0.1" />
+    <Fn id="3" name="BipolarGaussian" prob="0.1" />
+    <Fn id="4" name="BipolarSigmoid" prob="0.1" />
+    <Fn id="5" name="LogisticFunction" prob="0.1" />
+    <Fn id="6" name="QuadraticSigmoid" prob="0.1" />
+    <Fn id="7" name="TanH" prob="0.1" />
+    <Fn id="8" name="ArcSinH" prob="0.1" />
+    <Fn id="9" name="ReLU" prob="0.1" />
+  </ActivationFunctions>
+  <Networks>
+    <Network id="2" birthGen="0" fitness="0">
+      <Nodes>
+        <Node type="bias" id="0" fnId="0" />
+        <Node type="in" id="1" fnId="0" />
+        <Node type="in" id="2" fnId="0" />
+        <Node type="in" id="3" fnId="0" />
+        <Node type="out" id="4" fnId="0" />
+        <Node type="out" id="5" fnId="0" />
+        <Node type="out" id="6" fnId="0" />
+        <Node type="out" id="7" fnId="0" />
+        <Node type="out" id="8" fnId="0" />
+      </Nodes>
+      <Connections>
+        <Con id="9" src="0" tgt="4" wght="-1.2483117076970207" />
+        <Con id="10" src="0" tgt="5" wght="1.2919574609799234" />
+        <Con id="11" src="0" tgt="6" wght="3.2976727814611015" />
+        <Con id="12" src="0" tgt="7" wght="4.5639186117631994" />
+        <Con id="13" src="0" tgt="8" wght="1.6772187331988953" />
+        <Con id="14" src="1" tgt="4" wght="-2.5150411873873879" />
+        <Con id="15" src="1" tgt="5" wght="1.6835215086014244" />
+        <Con id="16" src="1" tgt="6" wght="-3.0142861092056847" />
+        <Con id="17" src="1" tgt="7" wght="-4.8501571712828042" />
+        <Con id="18" src="1" tgt="8" wght="-4.9350933966085018" />
+        <Con id="19" src="2" tgt="4" wght="-0.861845813939025" />
+        <Con id="20" src="2" tgt="5" wght="4.8588766566951609" />
+        <Con id="21" src="2" tgt="6" wght="3.3680268141368774" />
+        <Con id="22" src="2" tgt="7" wght="-4.8566069123074351" />
+        <Con id="23" src="2" tgt="8" wght="1.987358882250988" />
+        <Con id="24" src="3" tgt="4" wght="2.8582354891729009" />
+        <Con id="25" src="3" tgt="5" wght="-0.83853102580048411" />
+        <Con id="26" src="3" tgt="6" wght="3.8769237625958466" />
+        <Con id="27" src="3" tgt="7" wght="-0.1136256214976461" />
+        <Con id="28" src="3" tgt="8" wght="4.1622872269401165" />
+      </Connections>
+    </Network>
+  </Networks>
+</Root>
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption={Пример json файла с параметрами некоторого оружия},label={lst:json}]
+{
+    "<WeaponMode>k__BackingField": 0,
+    "<BurstMode>k__BackingField": 2,
+    "<BurstRate>k__BackingField": 0.05000000074505806,
+    "<FireRate>k__BackingField": 0.30000001192092898,
+    "<ProjectilesInOneShot>k__BackingField": 4,
+    "<RotationSpeed>k__BackingField": 0.0,
+    "<MoveSpeed>k__BackingField": 10.0,
+    "<NetworkControlMode>k__BackingField": 0,
+    "<ReadMode>k__BackingField": 0,
+    "<Size>k__BackingField": {
+        "x": 0.07000000029802323,
+        "y": 0.07000000029802323
+    },
+    "<HasLifespan>k__BackingField": true,
+    "<Lifespan>k__BackingField": 8.0,
+    "<HasTrail>k__BackingField": true,
+    "<HueRange>k__BackingField": {
+        "x": 0.4115835428237915,
+        "y": 0.7891817092895508
+    },
+    "<Saturation>k__BackingField": 0.8029999732971191,
+    "<Brightness>k__BackingField": 1.0,
+    "<SpeedRange>k__BackingField": {
+        "x": 2.5092172622680666,
+        "y": 5.50921630859375
+    },
+    "<ForceRange>k__BackingField": {
+        "x": 1.4973399639129639,
+        "y": 3.4973397254943849
+    },
+    "<NNControlDistance>k__BackingField": 4.0,
+    "<SignX>k__BackingField": 0.0,
+    "<SignY>k__BackingField": -1.0,
+    "<ForwardForce>k__BackingField": false,
+    "<InitialFlightRadius>k__BackingField": 0.05000000074505806,
+    "<InitialSpeed>k__BackingField": 0.5,
+    "<Angle>k__BackingField": 179.0,
+    "<FlipXOnReflect>k__BackingField": false,
+    "<FlipYOnReflect>k__BackingField": false,
+    "<Mode>k__BackingField": 0,
+    "<ReflectiveCircleRadius>k__BackingField": 1.4142135381698609,
+    "<RectDimensions>k__BackingField": {
+        "x": 1.0,
+        "y": 1.0
+    },
+    "<MaxPolarAngleDeg>k__BackingField": 65.0
+}
+\end{lstlisting}
+
+
+

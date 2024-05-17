@@ -2,7 +2,15 @@
 %! suppress = LineBreak
 \section{Разработка системы генерации оружия}
 
-Исходный код доступен в репозитории\cite{s7}.
+В этой главе описывается разработка системы генерации оружия. Исходный код доступен в репозитории\cite{s7}. WebGL демо доступно здесь\cite{s9}. У проекта есть документация на английском\cite{s13}.
+
+\textbf{Замечание.} Система предназначена для работы внутри игрового движка Unity, поэтому WebGL демо не может показать весь её функционал. В WebGL демо не доступно изменение параметров оружия, сохранение и загрузка параметров и генома, выбор понравившегося оружия для создания следующего поколения. Для тестирования этих функций системы потребуется выполнить следующие шаги:
+
+\begin{enumerate}
+    \item Установите Unity версии 2022.3 или новее.
+    \item Клонируйте репозиторий с проектом\cite{s7}.
+    \item Откройте директорию с репозиторием как проект Unity. Все зависимости будут установлены автоматически.
+\end{enumerate}
 
 \subsection{Цвет и траектория снарядов}
 
@@ -11,8 +19,11 @@
 \lstset{
     emph={InverseTransformPoint, TransformDirection, AddForce, ResetState, Activate, SqrMagnitude, Sqrt, Lerp, Abs, HSVToRGB},
     emphstyle=\color{mauve},
-    emph={[2]Mathf, math, Vector2, Color, neatGenomeParams},
-    emphstyle={[2]\color{dkgreen}}}
+    emph={[2]Mathf, math, Vector2, Color, NeatGenomeParams},
+    emphstyle={[2]\color{dkgreen}}
+}
+
+\pagebreak
 
 \begin{lstlisting}[name=Projectile, caption={Projectile. Part 1}]
 Box.ResetState(); 
@@ -26,7 +37,6 @@ _inputArr[1] = Mathf.Lerp(-1f, 1f, Mathf.Abs(RelativePos.y) / NNControlDistance)
 _inputArr[2] = Mathf.Lerp(-1f, 1f, DistanceFromOrigin / maxDistance);
             
 Box.Activate();
-
 \end{lstlisting}
 
 Рассмотрим подробнее этот фрагмент кода. \lstinline{_inputArr[]} -- это массив, через который нейронная сеть получает данные. Все значения, принимаемые нейронной сетью должны лежать в отрезке $[-1,1]$. Для нормализации входных данных используется встроенный в Unity метод для линейной интерполяции \lstinline{Lerp()}, а также параметр \lstinline{NNControlDistance}, подбираемый пользователем.
@@ -59,22 +69,22 @@ if (speed > maxSpeed)
 transform.up = Rigidbody.velocity;
 \end{lstlisting}
 
-После активации сети можно считывать выходные данные через массив \lstinline{_outputArr[]}. Сеть выдает все значения в отрезке $[0,1]$. Данные с первых двух выходов \lstinline{_outputArr[0]} и \lstinline{_outputArr[1]}, отвечающих за $x$ и $y$ компоненты скорости, сначала преобразуются в отрезки $[-1,1]$. Затем на их основе строится нормированный вектор силы \lstinline{forceDir}, который потом прилагается к снаряду посредством метода \lstinline{AddForce}.
+После активации сети можно считывать выходные данные через массив \lstinline{_outputArr[]}. Сеть выдает все значения в отрезке $[0,1]$. Данные с первых двух выводов \lstinline{_outputArr[0]} и \lstinline{_outputArr[1]}, отвечающих за $x$ и $y$ компоненты вектора, сначала преобразуются в отрезки $[-1,1]$. Затем на их основе строится нормированный вектор \lstinline{forceDir}, который потом прилагается к снаряду посредством метода \lstinline{AddForce}.
 
 Так было сделано для плавности и реалистичности полета снарядов, если бы нейронная сеть меняла их скорость напрямую, они бы двигались дёрганно и слишком резко. Чтобы под действием силы скорость снаряда не росла до бесконечности, она ограничена параметром \lstinline{maxSpeed}.
 
 Изначально планировалось использовать цветовую модель RGB, но возникли проблемы с контролем цветов, которые может выдавать сеть. Например, если у игры темный фон, то снаряды должны быть ярких оттенков, чтобы не сливаться с ним. У пользователя должна быть возможность задать желаемое пространство цветов, внутри которого будут заключены значения нейронной сети. RGB представляет цвета в виде точек в трехмерном пространстве, поэтому выделить такое пространство было бы затруднительно.
 
-Эту проблему решает цветовая модель HSV (Hue, Saturation, Value — тон, насыщенность, значение), в которой цвет представляется более интуитивно понятным образом. Компонента \lstinline{hue} задается в виде отрезка, минимальное и максимальное значение которого выбирается пользователем. \lstinline{Saturation} и \lstinline{Value} задаются как константы и тоже могут быть изменены пользователем.
+Эту проблему решает цветовая модель HSV (Hue, Saturation, Value — тон, насыщенность, значение), в которой цвет представляется более интуитивно понятным образом. Компонента {\small \textbf{hue}} задается в виде отрезка, минимальное и максимальное значение которого выбирается пользователем. {\small \textbf{Saturation}} и {\small \textbf{Value}} задаются как константы и тоже могут быть изменены пользователем.
 
 
 
 \subsection{Параметры оружия}
-Для точной настройки оружия было добавлено 29 параметров, которые контролируются пользователем.
+Был добавлен 31 параметр, чтобы предоставить пользователю возможность точной настройки оружия.
 
 \vspace{5mm}
 
-\textbf{Параметры стрельбы.} Эти параметры регулируют скорострельность и начальную фазу полета снарядов:
+\textbf{Параметры стрельбы.} Эти параметры регулируют скорострельность и начальную фазу полёта снарядов:
 \begin{enumerate}
     \item {\small \textbf{FireRate}} -- Время в секундах между каждой очередью или выстрелом.
     \item {\small \textbf{ProjectilesInOneShot}} -- Количество снарядов в очереди или выстреле.
@@ -109,12 +119,12 @@ transform.up = Rigidbody.velocity;
 \textbf{Параметры снарядов.} Эти параметры отвечают за поведение и внешний вид снарядов:
 \begin{enumerate}
     \setcounter{enumi}{7}
-    \item {\small \textbf{NetworkControlMode}} -- Определяет, как сеть управляет снарядом. Есть два режима:
+    \item {\small \textbf{NetworkControlMode}} -- Определяет, как нейронная сеть управляет снарядом. Есть два режима:
     \begin{enumerate}[label=\textbullet]
         \item {\small \textbf{ForceSum}} -- Сеть выдает вектор силы, который затем суммируется с вектором силы, уже действующим на снаряд.
         \item {\small \textbf{VelocitySum}} -- Сеть выдает вектор скорости, который затем суммируется с вектором скорости, которым уже обладает снаряд.
     \end{enumerate}
-    \item {\small \textbf{ReadMode}} -- Определяет, каким образом из выходных параметров $(x, y)$ формируется вектор $\overrightarrow{dir}$, определяющий направление скорости или силы. Есть два режима:
+    \item {\small \textbf{ReadMode}} -- Определяет, каким образом из выводов сети $(x, y)$ формируется вектор $\overrightarrow{dir}$, определяющий направление скорости или силы. Есть два режима:
     \begin{enumerate}[label=\textbullet]
         \item {\small \textbf{Default}}: \[ \overrightarrow{dir}=x\hat{x}+y\hat{y}, \]
         где $\hat{x}, \hat{y}$ -- орты локальной системы координат снаряда с началом в точке выстрела.
@@ -123,8 +133,10 @@ transform.up = Rigidbody.velocity;
         где $\hat{r}$ -- орт радиус-вектора снаряда, и $\hat{q} \perp \hat{r}$.
 
     \end{enumerate}
-    \item {\small \textbf{Size}} -- Размер снаряда. Для рендеринга снарядов используется текстура круга. Изменяя этот параметр, можно получать снаряды в форме эллипсов.
-    \item {\small \textbf{Lifespan}} -- Срок жизни снаряда в секундах. По истечению этого срока снаряд уничтожается.
+    \item {\small \textbf{Size}} -- Размер снаряда. Для рендеринга снарядов используется текстура круга. Изменяя этот параметр, можно получать снаряды овальной формы.
+    \item {\small \textbf{HasLifespan}} -- Имеется ли у снаряда срок жизни, по истечении которого он уничтожается.
+    \item {\small \textbf{Lifespan}} -- Срок жизни снаряда в секундах.
+    \item {\small \textbf{HasTrail}} -- Оставляет ли снаряд за собой след.
     \item {\small \textbf{HueRange}} -- Диапазон возможных значений для цветовой компоненты hue. Точное значение зависит от вывода нейронной сети.
     \item {\small \textbf{Saturation}} -- Цветовая компонента Saturation.
     \item {\small \textbf{Brightness}} -- Цветовая компонента Value.
@@ -132,32 +144,32 @@ transform.up = Rigidbody.velocity;
 
 \vspace{5mm}
 
-\textbf{Параметры паттерна.} Эти параметры определяют настройки, связанные входными и выходными значениями нейронной сети:
+\textbf{Параметры паттерна.} Эти параметры определяют настройки, связанные вводами и выводами нейронной сети:
 \begin{enumerate}
-    \setcounter{enumi}{14}
+    \setcounter{enumi}{16}
     \item {\small \textbf{SpeedRange}} -- Диапазон возможных значений для максимальной скорости снаряда. Точное значение зависит от вывода нейронной сети.
     \item {\small \textbf{ForceRange}} -- Диапазон возможных значений силы, приложенной к снаряду. Точное значение зависит от вывода нейронной сети.
     \item {\small \textbf{NNControlDistance}} -- Определяет область, в которой снаряды управляются нейронной сетью.
-    \item {\small \textbf{SignX}} -- Множитель вывода х. Если он равен нулю, вывод будет проигнорирован.
-    \item {\small \textbf{SignY}} -- Множитель вывода у. Если он равен нулю, вывод будет проигнорирован.
-    \item {\small \textbf{ForwardForce}} -- Прилагать ли к снаряду силу, направленную вперед. Эта сила равна выводу force нейронной сети.
+    \item {\small \textbf{SignX}} -- Множитель вывода \textbf{x}. Если он равен нулю, вывод будет проигнорирован.
+    \item {\small \textbf{SignY}} -- Множитель вывода \textbf{y}. Если он равен нулю, вывод будет проигнорирован.
+    \item {\small \textbf{ForwardForce}} -- Прилагать ли к снаряду силу, направленную вперед. Эта сила равна выводу {\small \textbf{force}} нейронной сети.
 \end{enumerate}
 
 \vspace{5mm}
 
 \textbf{Параметры начальной фазы:}
 \begin{enumerate}
-    \setcounter{enumi}{20}
+    \setcounter{enumi}{22}
     \item {\small \textbf{InitialFlightRadius}} -- Определяет область, в которой снаряды находятся в состоянии начальной фазы. В этом состоянии снаряды не управляются нейронной сетью, вместо этого они движутся с постоянной начальной скоростью.
     \item {\small \textbf{InitialSpeed}} -- Длина вектора начальной скорости.
-    \item {\small \textbf{Angle}} -- Максимальный угол между начальной скоростью снаряда и вертикальной осью игрового объекта оружия.
+    \item {\small \textbf{Angle}} -- Максимальный угол в градусах между начальной скоростью снаряда и вертикальной осью игрового объекта оружия.
 \end{enumerate}
 
 \vspace{5mm}
 
 \textbf{Параметры отражения:}
 \begin{enumerate}
-    \setcounter{enumi}{23}
+    \setcounter{enumi}{25}
     \item {\small \textbf{FlipXOnReflect}} -- Изменять ли значение {\small \textbf{SignX}} на противоположное после отражения.
     \item {\small \textbf{FlipYOnReflect}} -- Изменять ли значение {\small \textbf{SignY}} на противоположное после отражения.
     \item {\small \textbf{Mode}} -- Определяет границы, от которых снаряд отражается. Есть три режима:
@@ -168,8 +180,10 @@ transform.up = Rigidbody.velocity;
     \end{enumerate}
     \item {\small \textbf{ReflectiveCircleRadius}} -- Радиус границы-окружности.
     \item {\small \textbf{RectDimensions}} -- Размеры границы-прямоугольника.
-    \item {\small \textbf{MaxPolarAngleDeg}} -- Максимально возможный полярный угол.
+    \item {\small \textbf{MaxPolarAngleDeg}} -- Максимально возможный полярный угол в градусах.
 \end{enumerate}
+
+
 
 \pagebreak
 
@@ -180,8 +194,8 @@ transform.up = Rigidbody.velocity;
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.4}{
-            \includegraphics{images/Inspector}
+        \scalebox{0.6}{
+            \includegraphics{images/WP3}
         }
 
         \caption{
@@ -190,16 +204,22 @@ transform.up = Rigidbody.velocity;
     \end {center}
 \end {figure}
 
-Особенности инспектора параметров оружия:
+Функции и особенности инспектора параметров оружия (Рисунок~\ref{Inspector}):
 \begin{enumerate}[label=\textbullet]
-    \item Кнопка {\small \textbf{Reset to default values}}, возвращающая параметры к начальным значениям, заданным разработчиком.
-    \item Раздел {\small \textbf{Load files}} для загрузки генома и параметров с файлов.
-    \item Кнопка {\small \textbf{Destroy Projectiles}}, уничтожающая снаряды.
+    \item Кнопка {\small \textbf{Reset to default values}}, возвращающая параметры к начальным значениям.
+    \item Раздел {\small \textbf{Load files}} для загрузки генома и параметров оружия с файлов.
+    \item Кнопка {\small \textbf{Update json file}}, позволяющая перезаписать значения json файла значениями, которые выбраны в инспекторе в данный момент.
+    \item Кнопки {\small \textbf{Stop shooting}} и {\small \textbf{Start shooting}}, позволяющие останавливать и начинать стрельбу. 
+    \item Кнопка {\small \textbf{Destroy projectiles}}, уничтожающая снаряды.
+    \item Кнопка {\small \textbf{Launch}}, запускающая вращение и движение систем координат, в которых находятся снаряды.
     \item Двойные слайдеры, позволяющие задавать два значения: минимальное и максимальное.
     \item Интерфейс подстраивается под выбранные значения. К примеру, если в параметре {\small \textbf{Weapon Mode}} будет выбран режим {\small \textbf{Burst}}, появятся поля {\small \textbf{Burst Mode}} и {\small \textbf{Burst Rate}}.
     \item Есть поддержка редактирования нескольких объектов.
     \item Есть поддержка истории редактирования. То есть Undo/Redo.
 \end{enumerate}
+
+
+\vspace{5mm}
 
 \begin{figure}[ht]
     \begin{center}
@@ -213,7 +233,7 @@ transform.up = Rigidbody.velocity;
     \end {center}
 \end {figure}
 
-Особенности инспектора оружия:
+Функции и особенности инспектора оружия (Рисунок~\ref{SavingWeapon}):
 \begin{enumerate}[label=\textbullet]
     \item Кнопка {\small \textbf{Select as parent for next gen}}, позволяющая пользователю выбирать понравившиеся геномы.
     \item Кнопка {\small \textbf{Save}} для сохранения генома и параметров оружия.
@@ -241,27 +261,17 @@ transform.up = Rigidbody.velocity;
 PopulationSize = 6;
 CloneOffspringCount = 2;
 SexualOffspringCount = 4;
-neatGenomeParams.InitialInterconnectionsProportion = 0.2;
-neatGenomeParams.AddConnectionMutationProbability = 0.7;
-neatGenomeParams.AddNodeMutationProbability = 0.7;
-neatGenomeParams.ConnectionWeightMutationProbability = 0.8;
-neatGenomeParams.DisjointExcessGenesRecombinedProbability = 0.5;
-neatGenomeParams.NodeAuxStateMutationProbability = 0.2;
+NeatGenomeParams.FeedforwardOnly = true,
+NeatGenomeParams.InitialInterconnectionsProportion = 0.8;
+NeatGenomeParams.DisjointExcessGenesRecombinedProbability = 0.3;
+NeatGenomeParams.ConnectionWeightMutationProbability = 0.8;
+NeatGenomeParams.AddNodeMutationProbability = 0.6;
+NeatGenomeParams.AddConnectionMutationProbability = 0.6;
+NeatGenomeParams.NodeAuxStateMutationProbability = 0.1;
+NeatGenomeParams.DeleteConnectionMutationProbability = 0.1
 \end{lstlisting}
-Краткое описание этих параметров:
-\begin{enumerate}[label=\textbullet]
-    \item PopulationSize -- Количество геномов, подвергаемых эволюции.
-    \item CloneOffspringCount -- Сколько геномов создается путем клонирования.
-    \item SexualOffspringCount -- Сколько геномов создается путем полового размножения.
-    \item InitialInterconnectionsProportion -- Плотность нейронных сетей первого поколения.
-    \item AddConnectionMutationProbability -- Вероятность появления нового ребра.
-    \item AddNodeMutationProbability -- Вероятность появления нового узла.
-    \item ConnectionWeightMutationProbability -- Вероятность изменения веса ребра.
-    \item DisjointExcessGenesRecombinedProbability -- Вероятность копирования всех не совпавших генов в один из потомков при половом размножении.
-    \item NodeAuxStateMutationProbability -- Вероятность узла приобрести дополнительное состояние (стать неактивным).
-\end{enumerate}
 
-\pagebreak
+
 
 \textbf{Создание нового поколения.} Для создания нового поколения оружия необходимо выбрать родителей, на основе которых оно построится. Пользователь может выбрать любое их количество:
 
@@ -273,7 +283,7 @@ neatGenomeParams.NodeAuxStateMutationProbability = 0.2;
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.4}{
+        \scalebox{0.5}{
             \includegraphics{images/SelectWeapon}
         }
 
@@ -287,7 +297,7 @@ neatGenomeParams.NodeAuxStateMutationProbability = 0.2;
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.15}{
+        \scalebox{0.24}{
             \includegraphics{images/EvoScene}
         }
 
@@ -304,6 +314,41 @@ neatGenomeParams.NodeAuxStateMutationProbability = 0.2;
 Чтобы сохранить понравившееся оружие, нужно выбрать игровой объект оружия и в его инспекторе (Рисунок~\ref{SelectWeapon}) нажать кнопку {\small \textbf{Save.}} Будет создано и сохранено два файла:
 
 \begin{enumerate}[label=\textbullet]
-    \item {\small \textbf{Genome\_<UniqueHash>.xml}} содержит в себе информацию об узлах нейронной сети и функциях активации.
-    \item {\small \textbf{Params\_<UniqueHash>.json}} является представлением параметров оружия в формате json.
+    \item {\small \textbf{Genome\_<UniqueHash>.xml}} содержит в себе информацию об узлах нейронной сети и функциях активации (Листинг~\ref{lst:xml}).
+    \item {\small \textbf{Params\_<UniqueHash>.json}} является представлением параметров оружия в формате json (Листинг~\ref{lst:json}).
 \end{enumerate}
+
+
+\subsection{Сцена демонстрации оружия}
+
+\textbf{Weapon Demo} -- сцена, в которой демонстрируется 140 оружий, подобранных разработчиком. В этой сцене есть визуализация силовых полей, действующих на снаряды.
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{minipage}[b]{0.38\textwidth}
+            \includegraphics[width=\textwidth]{images/WeaponDemo1}
+            \caption{
+                \label{WeaponDemo1}
+                Weapon Demo без визуализации силовых полей.}
+        \end{minipage}
+        \hspace{30pt}
+        \begin{minipage}[b]{0.4\textwidth}
+            \includegraphics[width=\textwidth]{images/WeaponDemo2}
+            \caption{
+                \label{WeaponDemo2}
+                Weapon Demo с визуализацией силовых полей.}
+        \end{minipage}
+
+    \end{center}
+\end{figure}
+
+Функции этой сцены:
+\begin{enumerate}[label=\textbullet]
+    \item Кнопки {\small \textbf{Previous}} и {\small \textbf{Next}} для переключения оружия.
+    \item В левом верхнем блоке интерфейса содержится информация о режимах оружия и его номер.
+    \item Кнопка {\small \textbf{Has Trail}} определяет, оставляют ли снаряды за собой след.
+    \item Кнопка {\small \textbf{Force View}} включает и выключает режим визуализации силовых полей.
+    \item Кнопка {\small \textbf{Launch Forward}} запускает вперед системы координат, содержащие снаряды.
+\end{enumerate}
+
+\textbf{Замечание.} Разные группы снарядов имеют разные значения параметров {\small \textbf{SignY}} и {\small \textbf{SignX,}} поэтому визуализация силового поля будет некорректной для каких-то из них.

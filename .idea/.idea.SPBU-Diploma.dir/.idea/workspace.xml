@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="evolutionMethods is done!">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
-    </list>
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +94,7 @@
       <workItem from="1715658481922" duration="11274000" />
       <workItem from="1715699750676" duration="4978000" />
       <workItem from="1715773835750" duration="8363000" />
-      <workItem from="1715838411171" duration="18905000" />
+      <workItem from="1715838411171" duration="19523000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
@@ -156,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715885253299</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix intro">
+      <option name="closed" value="true" />
+      <created>1715888829078</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715888829078</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +177,7 @@
     <MESSAGE value="something is done" />
     <MESSAGE value="commit" />
     <MESSAGE value="evolutionMethods is done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="evolutionMethods is done!" />
+    <MESSAGE value="fix intro" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix intro" />
   </component>
 </project>
