@@ -237,7 +237,7 @@ transform.up = Rigidbody.velocity;
 \begin{enumerate}[label=\textbullet]
     \item Кнопка {\small \textbf{Select as parent for next gen}}, позволяющая пользователю выбирать понравившиеся геномы.
     \item Кнопка {\small \textbf{Save}} для сохранения генома и параметров оружия.
-    \item Флажок {\small \textbf{Generate unique hash name}}. Если отмечен, то при сохранении названия файлов генерируется автоматически.
+    \item Флажок {\small \textbf{Generate unique hash name}}. Если отмечен, то при сохранении названия файлов генерируются автоматически.
     \item Есть поддержка редактирования нескольких объектов.
 \end{enumerate}
 
@@ -257,7 +257,7 @@ transform.up = Rigidbody.velocity;
 
 Приведенные ниже значения параметров были получены опытным путем, остальные параметры сохранили значение по умолчанию. Параметры подбирались таким образом, чтобы интересные паттерны в среднем выводились за 10-15 поколений.
 
-\begin{lstlisting}[caption={Params}]
+\begin{lstlisting}[caption={Параметры алгоритма эволюции}]
 PopulationSize = 6;
 CloneOffspringCount = 2;
 SexualOffspringCount = 4;
@@ -321,7 +321,13 @@ NeatGenomeParams.DeleteConnectionMutationProbability = 0.1
 
 \subsection{Сцена демонстрации оружия}
 
-\textbf{Weapon Demo} -- сцена, в которой демонстрируется 140 оружий, подобранных разработчиком. В этой сцене есть визуализация силовых полей, действующих на снаряды.
+\textbf{Weapon Demo} -- сцена, в которой демонстрируется 140 оружий, подобранных разработчиком. В этой сцене есть визуализация силовых полей, действующих на снаряды. Силовое поле является визуализацией выводов нейронной сети:
+
+\begin{enumerate}
+    \item Направление стрелок передает значения выводов \textbf{x} и \textbf{y}.
+    \item Размер стрелок передает значение вывода {\small \textbf{force}}.
+    \item Цвет стрелок передает значение вывода {\small \textbf{hue}}.
+\end{enumerate}
 
 \begin{figure}[ht]
     \begin{center}
@@ -342,6 +348,9 @@ NeatGenomeParams.DeleteConnectionMutationProbability = 0.1
     \end{center}
 \end{figure}
 
+\textbf{Замечание.} Разные группы снарядов имеют разные значения параметров {\small \textbf{SignY}} и {\small \textbf{SignX,}} иными словами, они по-разному интерпретируют выводы \textbf{x} и \textbf{y}, поэтому визуализация силового поля не может быть корректной для всех снарядов.\\
+%
+%
 Функции этой сцены:
 \begin{enumerate}[label=\textbullet]
     \item Кнопки {\small \textbf{Previous}} и {\small \textbf{Next}} для переключения оружия.
@@ -351,4 +360,3 @@ NeatGenomeParams.DeleteConnectionMutationProbability = 0.1
     \item Кнопка {\small \textbf{Launch Forward}} запускает вперед системы координат, содержащие снаряды.
 \end{enumerate}
 
-\textbf{Замечание.} Разные группы снарядов имеют разные значения параметров {\small \textbf{SignY}} и {\small \textbf{SignX,}} поэтому визуализация силового поля будет некорректной для каких-то из них.

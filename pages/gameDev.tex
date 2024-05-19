@@ -27,7 +27,7 @@ WebGL сборка проекта и файл APK доступны здесь\ci
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.22}{
+        \scalebox{0.25}{
             \includegraphics{images/SS}
         }
 
@@ -59,7 +59,7 @@ WebGL сборка проекта и файл APK доступны здесь\ci
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.22}{
+        \scalebox{0.25}{
             \includegraphics{images/SSCanvas}
         }
 
@@ -74,13 +74,15 @@ WebGL сборка проекта и файл APK доступны здесь\ci
 
 Таким образом игрок способен влиять на генерацию оружия своим выбором, и при этом он всегда имеет шанс получить хорошее оружие из стартового набора и тем самым разнообразить популяцию. Благодаря этому риск того, что эволюция зайдет в тупик, то есть будет производить одинаковые оружия, значительно снижается.
 
+\pagebreak
+
 \subsection{Игра Space Shooter}
 
-\textbf{Space Shooter} -- простая игра тоже в жанре <<Shoot ’em up>>. Здесь оружие генерируется у врагов случайным образом.
+\textbf{Space Shooter} -- простая игра в жанре <<Shoot ’em up>> (Рисунок~\ref{SpaceShooter}). В этой игре есть звуковые эффекты, музыкальное сопровождение и враги, обладающие уникальным оружием.
 
 \begin{figure}[ht]
     \begin{center}
-        \scalebox{0.2}{
+        \scalebox{0.25}{
             \includegraphics{images/SpaceShooter}
         }
 
@@ -91,4 +93,56 @@ WebGL сборка проекта и файл APK доступны здесь\ci
     \end {center}
 \end {figure}
 
+Во время своей инициализации каждый враг случайным образом получает оружие из стартового набора. При этом происходит изменение параметров оружия и рандомизация некоторых из них (Листинг~\ref{lst:enemyRand}).
+
+\begin{lstlisting}[name=enemyRand, caption={Инициализация параметров вражеского оружия}, label={lst:enemyRand}]
+// Reset weaponParams values to json's
+weaponParams.LoadParamsFromJson();
+
+// Override values
+weaponParams.Lifespan = 4f;
+weaponParams.ProjectilesInOneShot = 8;
+weaponParams.ForwardForce = true;
+weaponParams.Mode = ReflectionMode.Polar;
+weaponParams.InitialSpeed = Random.Range(3f, 5f);
+weaponParams.MaxPolarAngleDeg = Random.Range(5f, 45f);
+weaponParams.Angle = Random.Range(2f, weaponParams.MaxPolarAngleDeg);
+weaponParams.NNControlDistance = 8f;
+\end{lstlisting}
+
 \pagebreak
+
+\subsection{Third-party files}
+
+В проекте были использованы сторонние файлы и программное обеспечение.
+
+\begin{center}
+    \begin{longtable}{|p{6cm}|p{6cm}|p{2cm}|}
+        \caption{Сторонние файлы}\\
+        \hline
+        Название & Лицензия & Ссылка\\
+        \hline
+        \hline
+        SharpNEAT & MIT &\cite{s8}\\
+        \hline
+        Redzen & MIT &\cite{s17}\\
+        \hline
+        log4net & Apache License 2.0 &\cite{s18}\\
+        \hline
+        Space Shooter Redux & Creative Commons (CC0) &\cite{s19}\\
+        \hline
+        5 Action Chiptunes & Creative Commons (CC0) &\cite{s20}\\
+        \hline
+        Retro Video Game Sound Effects Collection & Creative Commons (CC0) &\cite{s21}\\
+        \hline
+        Weapon Item Icon & Creative Commons (CC0) &\cite{s22}\\
+        \hline
+        Wheel Bot Dark Edition & Не указано &\cite{s23}\\
+        \hline
+        Sci-Fi Samurai & Не указано &\cite{s24}\\
+        \hline
+        Top down dungeon tileset & Creative Commons BY 3.0 &\cite{s25}\\
+        \hline
+    \end{longtable}
+\end{center}
+
