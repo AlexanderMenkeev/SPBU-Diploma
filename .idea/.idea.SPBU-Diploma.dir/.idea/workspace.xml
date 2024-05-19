@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="">
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="conclusion is done!">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/main.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/conclusion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/conclusion.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/evolutionMethods.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/evolutionMethods.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/gameDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/gameDev.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/generatorDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generatorDev.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/weaponIdea.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/weaponIdea.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +104,7 @@
       <workItem from="1715773835750" duration="8363000" />
       <workItem from="1715838411171" duration="19523000" />
       <workItem from="1715927489462" duration="24992000" />
-      <workItem from="1716101084356" duration="14096000" />
+      <workItem from="1716101084356" duration="19340000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
@@ -183,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715986890674</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="conclusion is done!">
+      <option name="closed" value="true" />
+      <created>1716139924673</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716139924673</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +205,7 @@
     <MESSAGE value="evolutionMethods is done!" />
     <MESSAGE value="fix intro" />
     <MESSAGE value="Shadow Survival is done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shadow Survival is done!" />
+    <MESSAGE value="conclusion is done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="conclusion is done!" />
   </component>
 </project>
