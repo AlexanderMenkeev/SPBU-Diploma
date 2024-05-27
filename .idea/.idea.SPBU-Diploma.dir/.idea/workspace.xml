@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="conclusion is done!">
+    <list default="true" id="8a569593-28ed-4aa5-8d53-d9b5acc00921" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SPBU-Diploma.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outFiles/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/outFiles/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/conclusion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/conclusion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/evolutionMethods.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/evolutionMethods.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/existingSolutions.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/existingSolutions.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/gameDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/gameDev.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/generatorDev.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/generatorDev.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/introTaskLit.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/introTaskLit.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/weaponIdea.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pages/weaponIdea.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +58,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -104,7 +110,9 @@
       <workItem from="1715773835750" duration="8363000" />
       <workItem from="1715838411171" duration="19523000" />
       <workItem from="1715927489462" duration="24992000" />
-      <workItem from="1716101084356" duration="19340000" />
+      <workItem from="1716101084356" duration="19979000" />
+      <workItem from="1716450850373" duration="1335000" />
+      <workItem from="1716463396699" duration="9871000" />
     </task>
     <task id="LOCAL-00001" summary="titlepage is done!">
       <option name="closed" value="true" />
@@ -186,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716139924673</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Literature review is done!">
+      <option name="closed" value="true" />
+      <created>1716155982001</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716155982001</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +222,7 @@
     <MESSAGE value="fix intro" />
     <MESSAGE value="Shadow Survival is done!" />
     <MESSAGE value="conclusion is done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="conclusion is done!" />
+    <MESSAGE value="Literature review is done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Literature review is done!" />
   </component>
 </project>
